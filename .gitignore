@@ -1,0 +1,4 @@
+reswoy-odoo
+__pycache__/
+*.pyc
+.env
