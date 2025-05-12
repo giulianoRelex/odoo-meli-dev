@@ -23,7 +23,7 @@ Este repositorio proporciona un entorno de desarrollo para Odoo 18 utilizando Do
 
 ## 📁 ¿Dónde van los módulos personalizados?
 
-Por convención, puedes colocar tus módulos personalizados en un directorio como `odoo/`. **Este directorio está ignorado por Git**, lo que significa que **no forma parte del repositorio**. Esto permite que cada desarrollador cree su propio entorno sin conflictos con el repositorio base.
+Por convención, puedes colocar tus módulos personalizados en un directorio como `odoo/`. **Este directorio está ignorado por Git** (`.gitignore`), lo que significa que **no forma parte del repositorio**. Esto permite que cada desarrollador cree su propio entorno sin conflictos con el repositorio base.
 
 ### ⚠️ Importante
 
@@ -96,14 +96,35 @@ docker exec -it odoo-web-1 bash
 2. Ejecuta la actualización del módulo (reemplaza `my_module` por el nombre de tu módulo):
 
 ```bash
-odoo -u my_module -d odoo_db --stop-after-init
+odoo -u my_module -d odoo_db --without-demo=all --stop-after-init
 ```
 
 - Esto aplicará los cambios y detendrá el proceso Odoo (puedes volver a levantarlo con `docker-compose restart web`).
-- También puedes usarlo **sin detener** el proceso si estás en modo desarrollo:
+
+### 🐚 Usar el Odoo Shell (modo interactivo Python)
 
 ```bash
-odoo -u my_module -d odoo_db
+odoo shell -d odoo_db
+```
+
+Ejemplo:
+
+```python
+partner = env['res.partner'].search([('email', '=', 'asusteK@yourcompany.example.com')], limit=1)
+partner.name
+partner.name = 'Odoo'
+```
+
+### 📦 Instalar un módulo
+
+```bash
+odoo -i my_module -d odoo_db --without-demo=all --stop-after-init
+```
+
+### 🧪 Ejecutar tests de un módulo
+
+```bash
+odoo -i my_module --test-enable --log-level=test -d odoo_db --stop-after-init
 ```
 
 ---
