@@ -28,7 +28,7 @@ services:
       - odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
-      - ./reswoy-odoo:/mnt/reswoy-odoo
+      - ./odoo:/mnt/odoo
     environment:
       - HOST=db
       - USER=odoo
