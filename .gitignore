@@ -1,4 +1,4 @@
-odoo/
+addons/
 __pycache__/
 *.pyc
 .env
