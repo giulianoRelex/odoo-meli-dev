@@ -34,7 +34,6 @@ services:
     command: >
       odoo
       --config=/etc/odoo/odoo.conf
-      --without-demo=all
       --db-filter=^odoo_db$
       --init=base,web,mail
 
