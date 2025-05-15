@@ -6,3 +6,4 @@ db_logs.txt
 odoo_logs.txt
 *.log
 .vscode/
+keys.json
