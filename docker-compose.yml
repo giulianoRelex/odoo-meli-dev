@@ -12,7 +12,7 @@ services:
     volumes:
       - odoo-db-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      test: ["CMD-SHELL", "pg_isready -U odoo -d odoo_db"]
       interval: 5s
       retries: 5
 
@@ -36,7 +36,6 @@ services:
       --config=/etc/odoo/odoo.conf
       --db-filter=^odoo_db$
       --init=base,web,mail
-      --log-level=debug
       --without-demo=all
 
 
