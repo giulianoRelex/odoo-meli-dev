@@ -36,6 +36,9 @@ services:
       --config=/etc/odoo/odoo.conf
       --db-filter=^odoo_db$
       --init=base,web,mail
+      --log-level=debug
+      --without-demo=all
+
 
 volumes:
   odoo-web-data:
