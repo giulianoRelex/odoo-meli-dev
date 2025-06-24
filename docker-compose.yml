@@ -33,7 +33,11 @@ services:
       - USER=odoo
       - PASSWORD=odoo
     command: >
-      odoo --config=/etc/odoo/odoo.conf --db-filter=^odoo_db$$ --init=base,web,mail --without-demo=all
+      odoo --config=/etc/odoo/odoo.conf --db-filter=^odoo_db$$ --init=base,web,mail,attendance_webhook
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/web/status || exit 1"]
+      interval: 10s
+      retries: 5  
 
 
 volumes:
