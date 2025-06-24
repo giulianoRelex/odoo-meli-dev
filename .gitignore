@@ -7,3 +7,4 @@ odoo_logs.txt
 *.log
 .vscode/
 keys.json
+enterprise-18.0
